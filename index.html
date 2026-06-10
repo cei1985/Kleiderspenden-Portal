@@ -93,5 +93,27 @@
         </footer>
 
     </div> <!-- Ende Container -->
+    <script>
+    // 1. Selektieren der relevanten Elemente über ihre IDs
+    const radioStelle = document.querySelector('#art-stelle');
+    const radioAbholung = document.querySelector('#art-abholung');
+    const adressBereich = document.querySelector('#adress-bereich');
+
+    // 2. Initialer Zustand: Adresse ausblenden, da "Geschäftsstelle" vorausgewählt ist
+    adressBereich.style.display = 'none';
+
+    // 3. Logik für das Umschalten (Event-Listener)
+    radioStelle.addEventListener('change', function() {
+        if (this.checked) {
+            adressBereich.style.display = 'none'; // Verstecken
+        }
+    });
+
+    radioAbholung.addEventListener('change', function() {
+        if (this.checked) {
+            adressBereich.style.display = 'block'; // Anzeigen
+        }
+    });
+</script>
 </body>
 </html>
