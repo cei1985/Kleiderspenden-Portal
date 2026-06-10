@@ -1,94 +1,97 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
-    <title>Kleiderspenden-Portal Herzenswärme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herzenswärme e.V. - Kleiderspenden</title>
+    <!-- Bootstrap CSS einbinden -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2/dist/css/bootstrap.min.css">
 </head>
-
 <body>
-    <!-- Titel und Logo -->
-    <header>
-        <h1>Herzenswärme e.V.</h1>
-        <nav>
-            <!-- Platz für die globale Navigation -->
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#registrierung">Spende registrieren</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Der Container sorgt für die Zentrierung und Abstände [2] -->
+    <div class="container my-5">
+        
+        <!-- Header-Bereich -->
+        <header class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-bottom">
+            <h1 class="navbar-brand fs-2 fw-bold text-primary">Herzenswärme e.V.</h1>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2">Spende registrieren</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <!-- Der Hauptinhalt der Seite -->
-    <main>
-        <section id="registrierung">
-            <h2>Registrierung deiner Kleiderspende</h2>
-            <p>Hier werden wir gleich das Formular erstellen.</p>
-        </section>
-        <form id="spenden-formular">
-            <!-- Feld 1: Art der Kleidung -->
-            <label for="kleidungsart">Art der Kleidung:</label>
-            <select id="kleidungsart" name="kleidungsart" required>
-                <option value="" disabled selected>Bitte wählen...</option>
-                <option value="oberbekleidung">Oberbekleidung (T-Shirts, Pullis, etc.)</option>
-                <option value="hosen">Hosen & Röcke</option>
-                <option value="schuhe">Schuhe</option>
-                <option value="kinder">Kinderkleidung</option>
-            </select>
+        <!-- Hauptbereich mit Grid-System [3] -->
+        <main class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                
+                <div class="card shadow-sm p-4">
+                    <h2 class="mb-4">Registrierung deiner Kleiderspende</h2>
+                    
+                    <form id="spenden-formular">
+                        <!-- Kleidungsart -->
+                        <div class="mb-3">
+                            <label for="kleidungsart" class="form-label">Art der Kleidung:</label>
+                            <select id="kleidungsart" class="form-select" required>
+                                <option value="" disabled selected>Bitte wählen...</option>
+                                <option value="oberbekleidung">Oberbekleidung</option>
+                                <option value="hosen">Hosen & Röcke</option>
+                                <option value="schuhe">Schuhe</option>
+                            </select>
+                        </div>
 
-            <br><br>
+                        <!-- Krisengebiet -->
+                        <div class="mb-3">
+                            <label for="krisengebiet" class="form-label">Krisengebiet:</label>
+                            <select id="krisengebiet" class="form-select" required>
+                                <option value="" disabled selected>Bitte wählen...</option>
+                                <option value="region-a">Krisenregion A</option>
+                            </select>
+                        </div>
 
-            <!-- Feld 2: Krisengebiet -->
-            <label for="krisengebiet">Krisengebiet:</label>
-            <select id="krisengebiet" name="krisengebiet" required>
-                <option value="" disabled selected>Bitte wählen...</option>
-                <option value="region-a">Krisenregion A (Beispiel)</option>
-                <option value="region-b">Krisenregion B (Beispiel)</option>
-                <option value="region-c">Krisenregion C (Beispiel)</option>
-            </select>
-        </form>
-        <!-- Feld 3: Übergabeart -->
-        <fieldset>
-            <legend>Wie möchten Sie spenden?</legend>
+                        <!-- Übergabeart -->
+                        <div class="mb-3 border-top pt-3">
+                            <label class="form-label d-block fw-bold">Übergabeart:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="uebergabeart" id="art-stelle" value="geschaeftsstelle" checked>
+                                <label class="form-check-label" for="art-stelle">An der Geschäftsstelle</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="uebergabeart" id="art-abholung" value="abholung">
+                                <label class="form-check-label" for="art-abholung">Abholung durch Sammelfahrzeug</label>
+                            </div>
+                        </div>
 
-            <input type="radio" id="art-stelle" name="uebergabeart" value="geschaeftsstelle" checked>
-            <label for="art-stelle">Übergabe an der Geschäftsstelle</label>
+                        <!-- Adressbereich -->
+                        <div id="adress-bereich" class="mt-4 p-3 bg-light rounded">
+                            <h3>Abholadresse</h3>
+                            <div class="mb-2">
+                                <label for="strasse" class="form-label">Straße / Hausnr.:</label>
+                                <input type="text" id="strasse" class="form-control">
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <input type="text" id="plz" class="form-control" placeholder="PLZ" maxlength="5">
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" id="ort" class="form-control" placeholder="Stadt">
+                                </div>
+                            </div>
+                        </div>
 
-            <br>
+                        <button type="submit" class="btn btn-primary mt-4 w-100">Spende jetzt registrieren</button>
+                    </form>
+                </div>
 
-            <input type="radio" id="art-abholung" name="uebergabeart" value="abholung">
-            <label f </main>
-<!-- Feld 4: Adressbereich (wird später dynamisch gesteuert) -->
-<div id="adress-bereich" style="margin-top: 20px;">
-    <h3>Abholadresse</h3>
-    
-    <label for="strasse">Straße und Hausnummer:</label><br>
-    <input type="text" id="strasse" name="strasse">
-    
-    <br><br>
-    
-    <label for="plz">Postleitzahl:</label><br>
-    <!-- Wir nutzen 'pattern', um nur 5 Ziffern zu erlauben -->
-    <input type="text" id="plz" name="plz" maxlength="5">
-    
-    <br><br>
-    
-    <label for="ort">Stadt:</label><br>
-    <input type="text" id="ort" name="ort">
-</div>
+            </div>
+        </main>
 
-<!-- Absendebutton zum Abschluss des Formulars -->
-<br>
-<button type="submit">Spende jetzt registrieren</button>
-                <!-- Footer mit rechtlichen Hinweisen -->
-                <footer>
-                    <nav>
-                        <ul>
-                            <li><a href="impressum.html">Impressum</a></li>
-                            <li><a href="datenschutz.html">Datenschutz</a></li>
-                        </ul>
-                    </nav>
-                </footer>
+        <!-- Footer -->
+        <footer class="py-3 my-4 border-top text-center text-muted">
+            <p>&copy; 2026 Herzenswärme e.V. | <a href="#" class="text-decoration-none">Impressum</a> | <a href="#" class="text-decoration-none">Datenschutz</a></p>
+        </footer>
+
+    </div> <!-- Ende Container -->
 </body>
-
 </html>
