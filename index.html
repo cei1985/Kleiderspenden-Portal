@@ -1,9 +1,60 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <title>Kleiderspenden-Portal</title>
-  </head>
-  <body>
-    <h1>Willkommen beim Kleiderspenden-Portal</h1>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Kleiderspenden-Portal Herzenswärme</title>
+</head>
+<body>
+    <!-- Titel und Logo -->
+    <header>
+        <h1>Herzenswärme e.V.</h1>
+        <nav>
+            <!-- Platz für die globale Navigation -->
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#registrierung">Spende registrieren</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Der Hauptinhalt der Seite -->
+    <main>
+        <section id="registrierung">
+            <h2>Registrierung deiner Kleiderspende</h2>
+            <p>Hier werden wir gleich das Formular erstellen.</p>
+        </section>
+        <form id="spenden-formular">
+    <!-- Feld 1: Art der Kleidung -->
+    <label for="kleidungsart">Art der Kleidung:</label>
+    <select id="kleidungsart" name="kleidungsart" required>
+        <option value="" disabled selected>Bitte wählen...</option>
+        <option value="oberbekleidung">Oberbekleidung (T-Shirts, Pullis, etc.)</option>
+        <option value="hosen">Hosen & Röcke</option>
+        <option value="schuhe">Schuhe</option>
+        <option value="kinder">Kinderkleidung</option>
+    </select>
+
+    <br><br>
+
+    <!-- Feld 2: Krisengebiet -->
+    <label for="krisengebiet">Krisengebiet:</label>
+    <select id="krisengebiet" name="krisengebiet" required>
+        <option value="" disabled selected>Bitte wählen...</option>
+        <option value="region-a">Krisenregion A (Beispiel)</option>
+        <option value="region-b">Krisenregion B (Beispiel)</option>
+        <option value="region-c">Krisenregion C (Beispiel)</option>
+    </select>
+</form>
+    </main>
+
+    <!-- Footer mit rechtlichen Hinweisen -->
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="datenschutz.html">Datenschutz</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
 </html>
