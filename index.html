@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <title>Kleiderspenden-Portal Herzenswärme</title>
 </head>
+
 <body>
     <!-- Titel und Logo -->
     <header>
@@ -24,37 +26,69 @@
             <p>Hier werden wir gleich das Formular erstellen.</p>
         </section>
         <form id="spenden-formular">
-    <!-- Feld 1: Art der Kleidung -->
-    <label for="kleidungsart">Art der Kleidung:</label>
-    <select id="kleidungsart" name="kleidungsart" required>
-        <option value="" disabled selected>Bitte wählen...</option>
-        <option value="oberbekleidung">Oberbekleidung (T-Shirts, Pullis, etc.)</option>
-        <option value="hosen">Hosen & Röcke</option>
-        <option value="schuhe">Schuhe</option>
-        <option value="kinder">Kinderkleidung</option>
-    </select>
+            <!-- Feld 1: Art der Kleidung -->
+            <label for="kleidungsart">Art der Kleidung:</label>
+            <select id="kleidungsart" name="kleidungsart" required>
+                <option value="" disabled selected>Bitte wählen...</option>
+                <option value="oberbekleidung">Oberbekleidung (T-Shirts, Pullis, etc.)</option>
+                <option value="hosen">Hosen & Röcke</option>
+                <option value="schuhe">Schuhe</option>
+                <option value="kinder">Kinderkleidung</option>
+            </select>
 
+            <br><br>
+
+            <!-- Feld 2: Krisengebiet -->
+            <label for="krisengebiet">Krisengebiet:</label>
+            <select id="krisengebiet" name="krisengebiet" required>
+                <option value="" disabled selected>Bitte wählen...</option>
+                <option value="region-a">Krisenregion A (Beispiel)</option>
+                <option value="region-b">Krisenregion B (Beispiel)</option>
+                <option value="region-c">Krisenregion C (Beispiel)</option>
+            </select>
+        </form>
+        <!-- Feld 3: Übergabeart -->
+        <fieldset>
+            <legend>Wie möchten Sie spenden?</legend>
+
+            <input type="radio" id="art-stelle" name="uebergabeart" value="geschaeftsstelle" checked>
+            <label for="art-stelle">Übergabe an der Geschäftsstelle</label>
+
+            <br>
+
+            <input type="radio" id="art-abholung" name="uebergabeart" value="abholung">
+            <label f </main>
+<!-- Feld 4: Adressbereich (wird später dynamisch gesteuert) -->
+<div id="adress-bereich" style="margin-top: 20px;">
+    <h3>Abholadresse</h3>
+    
+    <label for="strasse">Straße und Hausnummer:</label><br>
+    <input type="text" id="strasse" name="strasse">
+    
     <br><br>
+    
+    <label for="plz">Postleitzahl:</label><br>
+    <!-- Wir nutzen 'pattern', um nur 5 Ziffern zu erlauben -->
+    <input type="text" id="plz" name="plz" maxlength="5">
+    
+    <br><br>
+    
+    <label for="ort">Stadt:</label><br>
+    <input type="text" id="ort" name="ort">
+</div>
 
-    <!-- Feld 2: Krisengebiet -->
-    <label for="krisengebiet">Krisengebiet:</label>
-    <select id="krisengebiet" name="krisengebiet" required>
-        <option value="" disabled selected>Bitte wählen...</option>
-        <option value="region-a">Krisenregion A (Beispiel)</option>
-        <option value="region-b">Krisenregion B (Beispiel)</option>
-        <option value="region-c">Krisenregion C (Beispiel)</option>
-    </select>
-</form>
-    </main>
-
-    <!-- Footer mit rechtlichen Hinweisen -->
-    <footer>
-        <nav>
-            <ul>
-                <li><a href="impressum.html">Impressum</a></li>
-                <li><a href="datenschutz.html">Datenschutz</a></li>
-            </ul>
-        </nav>
-    </footer>
+<!-- Absendebutton zum Abschluss des Formulars -->
+<br>
+<button type="submit">Spende jetzt registrieren</button>
+                <!-- Footer mit rechtlichen Hinweisen -->
+                <footer>
+                    <nav>
+                        <ul>
+                            <li><a href="impressum.html">Impressum</a></li>
+                            <li><a href="datenschutz.html">Datenschutz</a></li>
+                        </ul>
+                    </nav>
+                </footer>
 </body>
+
 </html>
