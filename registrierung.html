@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrierung - IU Kleiderspende e.V.</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container shadow-sm bg-white min-vh-100">
+        <header class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-4 border-bottom px-3">
+            <div class="d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" class="me-3">
+                    <path d="M2 8l10-5 10 5-10 5-10-5z" fill="#0d6efd" />
+                    <path d="M6 10v3c0 1 2 2 6 2s6-1 6-2v-3" stroke="#0d6efd" fill="none" stroke-width="1.5" />
+                    <path d="M12 13v-1" stroke="#0d6efd" stroke-width="2" />
+                    <path d="M4 19c2-2 4-3 8-3s6 1 8 3" stroke="#0d6efd" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                </svg>
+                <div>
+                    <h1 class="h3 fw-bold text-primary mb-0">IU Kleiderspende e.V.</h1>
+                    <small class="text-muted">Akademie trifft Hilfe!</small>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a href="index.html" class="nav-link text-secondary">Home</a></li>
+                    <li class="nav-item"><a href="registrierung.html" class="nav-link active">Spende registrieren</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="row justify-content-center py-5">
+            <div class="col-lg-8 col-md-10 px-3">
+                <div class="card shadow-sm p-4">
+                    <h2 class="text-center mb-4">Kleiderspende registrieren</h2>
+                    <form id="spendenForm">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Art der Kleidung:</label>
+                            <select id="kleidungsart" class="form-select" required>
+                                <option value="">Bitte wählen...</option>
+                                <option>Hosen & Oberteile</option>
+                                <option>Jacken & Mäntel</option>
+                                <option>Schuhe</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Krisengebiet:</label>
+                            <select id="krisengebiet" class="form-select" required>
+                                <option value="">Bitte wählen...</option>
+                                <option>Region Nord (Nothilfe)</option>
+                                <option>Region Süd (Wiederaufbau)</option>
+                            </select>
+                        </div>
+                        <div class="card p-3 bg-light mb-3">
+                            <label class="form-label fw-bold">Übergabe-Option [3]:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="option" id="optStelle" value="stelle" checked>
+                                <label class="form-check-label" for="optStelle">Persönlich an der Geschäftsstelle</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="option" id="optAbholung" value="abholung">
+                                <label class="form-check-label" for="optAbholung">Abholung durch Sammelfahrzeug</label>
+                            </div>
+                        </div>
+                        <div id="adressBereich" style="display: none;" class="border p-3 rounded mb-3 bg-white">
+                            <h5 class="text-primary mb-3">Abholadresse</h5>
+                            <input type="text" id="strasse" class="form-control mb-2" placeholder="Straße/Hausnummer">
+                            <div class="row g-2">
+                                <div class="col-4"><input type="text" id="plz" class="form-control" placeholder="PLZ"></div>
+                                <div class="col-8"><input type="text" id="stadt" class="form-control" placeholder="Stadt"></div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 shadow-sm mt-3">Registrierung abschließen</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer class="py-3 mt-4 border-top text-center text-muted">
+            <p>&copy; 2026 IU Kleiderspende e.V. | <a href="#" class="text-decoration-none">Impressum</a> | <a href="#" class="text-decoration-none">Datenschutz</a></p>
+        </footer>
+    </div>
+
+    <script>
+        const optStelle = document.getElementById('optStelle');
+        const optAbholung = document.getElementById('optAbholung');
+        const adressBereich = document.getElementById('adressBereich');
+
+        optStelle.onclick = () => adressBereich.style.display = 'none';
+        optAbholung.onclick = () => adressBereich.style.display = 'block';
+
+        document.getElementById('spendenForm').onsubmit = (e) => {
+            e.preventDefault();
+            if(optAbholung.checked) {
+                const plz = document.getElementById('plz').value;
+                if(plz.substring(0,2) !== "12") { // Beispiel PLZ-Prüfung [5]
+                    alert("Abholung nur möglich, wenn PLZ mit '12' beginnt!");
+                    return;
+                }
+            }
+            // Daten speichern für die Bestätigungsseite [6, 7]
+            localStorage.setItem('art', document.getElementById('kleidungsart').value);
+            localStorage.setItem('gebiet', document.getElementById('krisengebiet').value);
+            localStorage.setItem('ort', optStelle.checked ? "Geschäftsstelle" : document.getElementById('strasse').value);
+            localStorage.setItem('datum', new Date().toLocaleDateString('de-DE'));
+            localStorage.setItem('zeit', new Date().toLocaleTimeString('de-DE', {hour: '2-digit', minute:'2-digit'}));
+            window.location.href = 'bestaetigung.html';
+        };
+    </script>
+</body>
+</html>
